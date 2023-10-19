@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="static/style_v2.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PitchTactics</title>
+  </head>
+  <body>
+    <header>
+      <a href="/">
+        <img class="logo" src="static/image/logotest.png" />
+      </a>
+      <ul class="navbar">
+        <li><a href="/onas">O nas</a></li>
+        <li><a href="/rejestracja">Rejestracja</a></li>
+        <li><a href="/kontakt">Kontakt</a></li>
+      </ul>
+      <div class="roz-menu" id="menu-icon">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </header>
+    <section class="kontakt">
+      <div class="title">Zaloguj się !</div>
+
+      <form method="POST" class="form">
+        {{ form.hidden_tag() }}
+        <div class="field">
+          {{ form.email() }} {% for error in form.email.errors %}
+          <span style="color: red">{{ error }}</span>
+          {% endfor %}
+          <label for="e-mail">E-mail</label>
+        </div>
+
+        <div class="field">
+          {{ form.haslo() }} {% for error in form.haslo.errors %}
+          <span style="color: red">{{ error }}</span>
+          {% endfor %} <label for="last-name">Hasło</label>
+        </div>
+
+        <div class="button-div">
+          <button type="submit">
+            {{ form.submit(style='cursor: pointer;font-family:Sigmar;') }}
+          </button>
+        </div>
+      </form>
+    </section>
+    <script src="static/js/hamburger.js"></script>
+  </body>
+</html>

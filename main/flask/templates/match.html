@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dopasuj</title>
+    <link rel="stylesheet" href="static/test.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      .red-row {
+        background-color: red;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo-section">
+        <div class="logo">
+          <a href="{{url_for('admin')}}">PitchTactics</a>
+        </div>
+      </div>
+      <h2 class="nazwy">
+        {% if current_user.druzyny %}
+        <p>Nazwa drużyny: {{ current_user.druzyny.nazwa }}</p>
+        {% else %}
+        <p>Nie stworzyłeś jeszcze żadnej drużyny</p>
+        {% endif %}
+      </h2>
+      <div class="dp">
+        <h2 class="nazwy">Witaj {{ current_user.imie }}</h2>
+      </div>
+    </header>
+
+    <div class="main-container">
+      <div class="nav-container">
+        <nav class="nav">
+          <div class="nav-upper-options">
+            <div class="nav-option option1">
+              <a href="{{url_for('klub')}}"><h3>Klub</h3></a>
+            </div>
+            <div class="nav-option option2">
+              <a href="{{url_for('boisko')}}"><h3>Taktyka</h3></a>
+            </div>
+            <div class="nav-option option3">
+              <a href="{{url_for('stats')}}"><h3>Statystki</h3></a>
+            </div>
+            <div class="nav-option option4">
+              <a href="{{url_for('matchhim')}}"><h3>Match-Him</h3></a>
+            </div>
+            <div class="nav-option option5">
+              <a href="{{url_for('calendar')}}"><h3>Harmonogram</h3></a>
+            </div>
+            <div class="nav-option option6">
+              <a href="{{url_for('opcje')}}"><h3>Opcje</h3></a>
+            </div>
+            <div class="nav-option logout">
+              <a href="{{url_for('wyloguj')}}"><h3>Wyloguj</h3></a>
+            </div>
+          </div>
+        </nav>
+      </div>
+      <div class="main">
+        <div class="report-container">
+          <div class="tiles-container">
+            <div class="tile" onclick="openModal('modal1')">
+              <div class="tile-content">
+                <h2>Pozycje z formacji defensywnej</h2>
+                <p>Znajdz najlepszego zawodnika z pozycji tymczasowych</p>
+              </div>
+            </div>
+            <div class="modal" id="modal1">
+              <div class="modal-content">
+                <span class="close" onclick="closeModal('modal1')"
+                  >&times;</span
+                >
+                <form id="doajax" method="POST">
+                  {{ form.hidden_tag() }}
+                  <div>{{ form.pozycje.label }} {{ form.pozycje }}</div>
+                  <div>
+                    <button type="submit">{{ form.guzik }}</button>
+                  </div>
+                </form>
+                <div id="thebest">
+                  <h2>Najlepszy obrońca:</h2>
+                </div>
+
+                <h3>Pozostali obrońcy:</h3>
+                <select id="reszta-obroncow">
+                  <option disabled selected>Wybierz zawodnika</option>
+                </select>
+                <div id="nextdefenders"></div>
+              </div>
+            </div>
+            <div class="tile" onclick="openModal('modal2')">
+              <div class="tile-content">
+                <h2>Pozycje z formacji pomocy</h2>
+                <p>Znajdz najlepszego zawodnika z pozycji tymczasowych</p>
+              </div>
+            </div>
+            <!-- 2 -->
+            <div class="modal" id="modal2">
+              <div class="modal-content">
+                <span class="close" onclick="closeModal('modal2')"
+                  >&times;</span
+                >
+                <form id="doajax2" method="POST">
+                  {{ pom.hidden_tag() }}
+                  <div>{{ pom.pozycje2.label }} {{ pom.pozycje2 }}</div>
+                  <div>
+                    <button type="submit">{{ pom.guzik2 }}</button>
+                  </div>
+                </form>
+                <div id="thebest2">
+                  <h3>Pomocnicy</h3>
+                </div>
+                <h3>Pozostali :</h3>
+                <select id="reszta-obroncow2">
+                  <option disabled selected>Wybierz zawodnika</option>
+                </select>
+                <div id="nextdefenders2"></div>
+              </div>
+            </div>
+            <!-- 3 -->
+            <div class="tile" onclick="openModal('modal3')">
+              <div class="tile-content">
+                <h2>Pozycje z formacji ataku</h2>
+                <p>Znajdz najlepszego zawodnika z pozycji tymczasowych</p>
+              </div>
+            </div>
+            <div class="modal" id="modal3">
+              <div class="modal-content">
+                <span class="close" onclick="closeModal('modal3')"
+                  >&times;</span
+                >
+                <form id="doajax3" method="POST">
+                  {{ ata.hidden_tag() }}
+                  <div>{{ ata.pozycje3.label }} {{ ata.pozycje3 }}</div>
+                  <div>
+                    <button type="submit">{{ ata.guzik3 }}</button>
+                  </div>
+                </form>
+                <div id="thebest3">
+                  <h3>Atakujący</h3>
+                </div>
+                <h3>Pozostali :</h3>
+                <select id="reszta-obroncow3">
+                  <option disabled selected>Wybierz zawodnika</option>
+                </select>
+                <div id="nextdefenders3"></div>
+              </div>
+            </div>
+            <!-- 4 -->
+            <div class="tile" onclick="openModal('modal4')">
+              <div class="tile-content">
+                <h2>Dopasuj zawodników</h2>
+                <p>Do działania algorytmu potrzeba 12 zawodników</p>
+              </div>
+            </div>
+            <div class="modal" id="modal4">
+              <div class="modal-content" id="testt">
+                <span class="close" onclick="closeModal('modal4')"
+                  >&times;</span
+                >
+                <div id="najlepsi">
+                  <h2>Dopasowanie do pozycji</h2>
+                  <table>
+                    <tr>
+                      <th>Pozycja</th>
+                      <th>Zawodnik</th>
+                    </tr>
+                    {% for pozycja in pozycje %}
+                    <tr>
+                      <td>{{ pozycja['pozycja'] }}</td>
+                      <td>
+                        <select id="zawodnik-select">
+                          {% for zawodnik in pozycja['zawodnik'] %}
+                          <option selected>
+                            {{zawodnik.Imie + ',
+                            '}}{{pozycja['ocena'][loop.index-1]}}
+                          </option>
+                          {% endfor %}
+                        </select>
+                      </td>
+                    </tr>
+                    {% endfor %}
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="static/js/CzerwonyTekst.js"></script>
+    <script src="static/js/Modal.js"></script>
+    <script src="static/js/AjaxPlayer.js"></script>
+  </body>
+</html>

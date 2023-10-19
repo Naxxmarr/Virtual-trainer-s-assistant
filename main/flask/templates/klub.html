@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Klub</title>
+    <link rel="stylesheet" href="static/test.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo-section">
+        <div class="logo">
+          <a href="{{url_for('admin')}}">PitchTactics</a>
+        </div>
+      </div>
+      <h2 class="nazwy">
+        {% if current_user.druzyny %}
+        <p>Nazwa drużyny: {{ current_user.druzyny.nazwa }}</p>
+        {% else %}
+        <p>Nie stworzyłeś jeszcze żadnej drużyny</p>
+        {% endif %}
+      </h2>
+      <div class="dp">
+        <h2 class="nazwy">Witaj {{ current_user.imie }}</h2>
+      </div>
+    </header>
+
+    <div class="main-container">
+      <div class="nav-container">
+        <nav class="nav">
+          <div class="nav-upper-options">
+            <div class="nav-option option1">
+              <a href="{{url_for('klub')}}"><h3>Klub</h3></a>
+            </div>
+            <div class="nav-option option2">
+              <a href="{{url_for('boisko')}}"><h3>Taktyka</h3></a>
+            </div>
+            <div class="nav-option option3">
+              <a href="{{url_for('stats')}}"><h3>Statystki</h3></a>
+            </div>
+            <div class="nav-option option4">
+              <a href="{{url_for('matchhim')}}"><h3>Match-Him</h3></a>
+            </div>
+            <div class="nav-option option5">
+              <a href="{{url_for('calendar')}}"><h3>Harmonogram</h3></a>
+            </div>
+            <div class="nav-option option6">
+              <a href="{{url_for('opcje')}}"><h3>Opcje</h3></a>
+            </div>
+            <div class="nav-option logout">
+              <a href="{{url_for('wyloguj')}}"><h3>Wyloguj</h3></a>
+            </div>
+          </div>
+        </nav>
+      </div>
+      <div class="main">
+        <div class="report-container">
+          <div class="tiles-container">
+            <div class="tile" onclick="openModal('modal1')">
+              <div class="tile-content">
+                <h2>Stwórz klub</h2>
+                <p>Stwórz swój własny klub</p>
+              </div>
+            </div>
+            <div class="modal" id="modal1">
+              <div class="modal-content">
+                <span class="close" onclick="closeModal('modal1')"
+                  >&times;</span
+                >
+                <h2>Stwórz swój klub</h2>
+                <form method="POST" class="form">
+                  {{ form.hidden_tag() }}
+                  <div class="field">
+                    {{ form.nazwa() }}
+                    <label for="Nazwa">Nazwa Drużyny</label>
+                  </div>
+                  <div class="button-div">
+                    <button type="submit">
+                      {{ form.submit(style='cursor:
+                      pointer;font-family:Sigmar;') }}
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="tile" onclick="openModal('modal2')">
+              <div class="tile-content">
+                <h2>Dodaj zawodnika</h2>
+                <p>Wpisz dane i dodaj zawodnika</p>
+              </div>
+            </div>
+            <div class="modal" id="modal2">
+              <div class="modal-content">
+                <span class="close" onclick="closeModal('modal2')"
+                  >&times;</span
+                >
+                <h2>Dodaj zawodnika</h2>
+                <form method="POST" action="{{ url_for('addplayer') }}">
+                  {{ form.hidden_tag() }}
+
+                  <div class="field">
+                    <label for="imie">Imię:</label>
+                    {{ addp.imie() }}
+                  </div>
+
+                  <div class="field">
+                    <label for="nazwisko">Nazwisko:</label>
+                    {{ addp.nazwisko() }}
+                  </div>
+
+                  <div class="field">
+                    <label for="wzrost">Wzrost:</label>
+                    {{ addp.wzrost() }}
+                  </div>
+
+                  <div class="field">
+                    <label for="waga">Waga:</label>
+                    {{ addp.waga() }}
+                  </div>
+
+                  <div class="field">
+                    <label for="pozycja">Pozycja tymczasowa:</label>
+                    {{ addp.pozycja() }}
+                  </div>
+
+                  <div class="field">
+                    <label for="szybkosc">Szybkość:</label>
+                    {{ addp.szybkosc() }}
+                  </div>
+
+                  <div class="field">
+                    <label for="sila">Siła:</label>
+                    {{ addp.sila() }}
+                  </div>
+
+                  <div class="field">
+                    <label for="drybling">Drybling:</label>
+                    {{ addp.drybling() }}
+                  </div>
+
+                  <div class="field">
+                    <label for="strzal">Strzał:</label>
+                    {{ addp.strzal() }}
+                  </div>
+
+                  <div class="field">
+                    <label for="defensywa">Defensywa:</label>
+                    {{ addp.defensywa() }}
+                  </div>
+
+                  <div class="field">
+                    <label for="podania">Podania:</label>
+                    {{ addp.podania() }}
+                  </div>
+
+                  <div class="field">
+                    <label for="podania">Noga:</label>
+                    {{ addp.noga() }}
+                  </div>
+
+                  <div class="field">
+                    <button type="submit">
+                      {{ addp.submit(style='cursor:
+                      pointer;font-family:Sigmar;') }}
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="tile" onclick="openModal('modal3')">
+              <div class="tile-content">
+                <h2>Wyświetl Zawodników</h2>
+                <p>Przeanalizuj swoją drużyne</p>
+              </div>
+            </div>
+            <div class="modal" id="modal3">
+              <div class="modal-content" id="do-listy-modal">
+                <span class="close" onclick="closeModal('modal3')"
+                  >&times;</span
+                >
+                <h2>Wyświetl zawodników</h2>
+                <div>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Imię</th>
+                        <th>Pozycja tymczasowa</th>
+                        <th>Szybkosc</th>
+                        <th>Siła</th>
+                        <th>Drybling</th>
+                        <th>Defensywa</th>
+                        <th>Podania</th>
+                        <th>Strzały</th>
+                        <th>Lepsza Noga</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for lista in zawodnicy %}
+                      <tr>
+                        <td>{{ lista['Imie'] }}</td>
+                        <td>{{ lista['Pozycja'] }}</td>
+                        <td>{{ lista['Szybkosc'] }}</td>
+                        <td>{{ lista['Sila'] }}</td>
+                        <td>{{ lista['Drybling'] }}</td>
+                        <td>{{ lista['Defensywa'] }}</td>
+                        <td>{{ lista['Podania'] }}</td>
+                        <td>{{ lista['Strzaly'] }}</td>
+                        <td>{{ lista['Preferowana_Noga'] }}</td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="static/js/Modal.js"></script>
+  </body>
+</html>

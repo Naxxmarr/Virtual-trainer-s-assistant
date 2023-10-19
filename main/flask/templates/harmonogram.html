@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Harmonogram</title>
+    <link rel="stylesheet" href="static/test.css" />
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.6/index.global.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/fullcalendar.min.js"></script>
+    <script src="static/js/Harmonogram.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="logo-section">
+        <div class="logo">
+          <a href="{{url_for('admin')}}">PitchTactics</a>
+        </div>
+      </div>
+      <h2 class="nazwy">
+        {% if current_user.druzyny %}
+        <p>Nazwa drużyny: {{ current_user.druzyny.nazwa }}</p>
+        {% else %}
+        <p>Nie stworzyłeś jeszcze żadnej drużyny</p>
+        {% endif %}
+      </h2>
+      <div class="dp">
+        <h2 class="nazwy">Witaj {{ current_user.imie }}</h2>
+      </div>
+    </header>
+    <div class="main-container">
+      <div class="nav-container">
+        <nav class="nav">
+          <div class="nav-upper-options">
+            <div class="nav-option option1">
+              <a href="{{url_for('klub')}}"><h3>Klub</h3></a>
+            </div>
+            <div class="nav-option option2">
+              <a href="{{url_for('boisko')}}"><h3>Taktyka</h3></a>
+            </div>
+            <div class="nav-option option3">
+              <a href="{{url_for('stats')}}"><h3>Statystki</h3></a>
+            </div>
+            <div class="nav-option option4">
+              <a href="{{url_for('matchhim')}}"><h3>Match-Him</h3></a>
+            </div>
+            <div class="nav-option option5">
+              <a href="{{url_for('calendar')}}"><h3>Harmonogram</h3></a>
+            </div>
+            <div class="nav-option option6">
+              <a href="{{url_for('opcje')}}"><h3>Opcje</h3></a>
+            </div>
+            <div class="nav-option logout">
+              <a href="{{url_for('wyloguj')}}"><h3>Wyloguj</h3></a>
+            </div>
+          </div>
+        </nav>
+      </div>
+      <div class="main">
+        <div class="report-container">
+          <div id="calendar"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

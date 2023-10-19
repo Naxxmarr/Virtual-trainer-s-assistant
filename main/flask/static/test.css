@@ -1,0 +1,337 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+header {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  width: 100%;
+  height: 80px;
+  padding: 0 50px;
+  background-color: #0d47a1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.logo-section {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  font-size: 32px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+.logo a {
+  color: #fff;
+}
+
+.dp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nazwy {
+  color: wheat;
+}
+.main-container {
+  position: relative;
+  top: 80px;
+  width: 100%;
+  display: flex;
+}
+
+.main {
+  width: 100%;
+  padding: 60px 50px;
+  background-color: #f5f5f5;
+}
+
+.nav {
+  padding: 80px 20px 20px 20px;
+  display: flex;
+  position: fixed;
+}
+
+.nav-container {
+  position: relative;
+  width: 300px;
+  height: calc(100vh - 80px);
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.nav-upper-options {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.nav-option {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 20px;
+  background-color: #eee;
+  border-radius: 20px;
+}
+
+.nav-option:hover {
+  background-color: #f2f2f2;
+  border-left: 5px solid #0d47a1;
+  cursor: pointer;
+}
+
+.nav-option h3 {
+  font-size: 20px;
+  font-weight: 500;
+  color: #333333;
+}
+
+.report-container {
+  max-width: 100%;
+  height: auto;
+  margin: 80px auto 0 auto;
+  background-color: #ffffff;
+  border-radius: 30px;
+  box-shadow: 2px 2px 10px rgb(188, 188, 188);
+  padding: 40px;
+  color: #333333;
+  font-size: 20px;
+  line-height: 1.5;
+}
+/* zawodnicy */
+.oznaczenie {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 35px;
+}
+/* harmonogram */
+#calendar {
+  max-width: 100%;
+  height: 550px;
+}
+
+/* klub */
+.tiles-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: space-between;
+  width: 100%;
+  height: 100%;
+  padding: 30px;
+}
+
+.tile {
+  width: calc(33.333% - 20px);
+  height: 200px;
+  background-color: #007acc;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.2s ease-out;
+  cursor: pointer;
+}
+
+.tile:hover {
+  transform: translateY(-10px);
+}
+
+.tile-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px;
+  color: #fff;
+}
+
+.tile h2 {
+  font-size: 20px;
+  margin: 0 0 5px 0;
+}
+
+.tile p {
+  font-size: 16px;
+  margin: 0;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
+  text-align: center;
+  align-items: center;
+  border-radius: 20px;
+}
+#do-listy-modal {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 1200px;
+  text-align: center;
+  align-items: center;
+  border-radius: 20px;
+}
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+th,
+td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  word-break: break-word;
+  max-width: 0;
+  overflow: hidden;
+}
+
+/* resp */
+@media (max-width: 767px) {
+  .main-container {
+    flex-direction: column;
+    top: 0;
+  }
+
+  .nav {
+    padding: 90px 20px 20px 20px;
+    position: relative;
+  }
+
+  .nav-container {
+    width: 100%;
+    height: auto;
+  }
+
+  .nav-option {
+    padding: 10px;
+  }
+  .logo {
+    font-size: 10px;
+    padding-right: 50px;
+  }
+  .nazwy {
+    font-size: 10px;
+    padding-right: 50px;
+  }
+  .report-container {
+    margin-top: 20px;
+    font-size: 16px;
+    border-radius: 15px;
+    padding: 20px;
+  }
+  .tile {
+    width: 100%;
+    margin-bottom: 10px;
+    height: 150px;
+  }
+  .modal {
+    padding: 90px;
+  }
+
+  .modal-content {
+    width: 100%;
+    font-size: 15px;
+  }
+
+  th,
+  td {
+    width: auto;
+    white-space: nowrap;
+    font-size: 8px;
+  }
+
+  td:not(:last-child) {
+    border-bottom: none;
+  }
+  select {
+    font-size: 10px;
+    height: 24px;
+    padding: 4px;
+    width: 70px;
+  }
+  .tile-content p {
+    font-size: 10px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .nav {
+    padding: 80px 20px 20px 20px;
+  }
+  .logo-section {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .dp {
+    margin-top: 20px;
+  }
+  .logo {
+    font-size: 20px;
+  }
+  .main-container {
+    top: 80px;
+  }
+  .tile {
+    width: 100%;
+    margin-bottom: 10px;
+    height: 150px;
+  }
+  th,
+  td {
+    width: auto;
+    white-space: nowrap;
+    font-size: 10px;
+    border-spacing: 10px;
+    text-align: center;
+  }
+}

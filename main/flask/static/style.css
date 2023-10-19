@@ -1,0 +1,187 @@
+@font-face {
+  font-family: Sigmar;
+  src: url(fonts/Sigmar-Regular.ttf);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+}
+body {
+  background-image: url("image/boisko.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+header {
+  font-family: Sigmar;
+  width: 100%;
+  font-size: 23px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  align-items: center;
+  height: 8.6rem;
+  padding: 0 4.8rem;
+  z-index: 999;
+}
+
+.logo {
+  height: 2.2rem;
+}
+.navbar {
+  display: flex;
+}
+.navbar a {
+  color: white;
+  margin-left: 50px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 30px;
+  padding: 6px 15px;
+}
+.navbar a:hover {
+  background: white;
+  color: #ff6f61;
+}
+.roz-menu {
+  display: none;
+}
+.hero {
+  height: auto;
+  width: 100%;
+  min-height: 100vh;
+  display: grid;
+  align-items: center;
+  text-align: center;
+}
+.box-one-tekst {
+  font-family: Sigmar;
+  color: white;
+  line-height: 1.6;
+}
+.promo {
+  padding: 70px;
+  text-transform: uppercase;
+  font-size: 70px;
+}
+.tekst-pod {
+  font-size: 35px;
+}
+
+.btn {
+  background-color: #4caf50;
+  color: white;
+  padding: 16px 32px;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  background-color: #4caf50;
+  color: white;
+  border: 2px solid wheat;
+  border-radius: 10px;
+}
+
+.btn:hover {
+  background-color: white;
+  color: #ff6f61;
+}
+
+@media screen and (max-width: 1340px) {
+  header {
+    height: 6rem;
+    padding: 0 1.5rem;
+    font-size: 18px;
+  }
+
+  .logo {
+    height: 1rem;
+  }
+
+  .navbar a {
+    margin-left: 0;
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+  }
+
+  .hero {
+    min-height: 80vh;
+  }
+
+  .promo {
+    padding: 1.5rem;
+    font-size: 2.5rem;
+  }
+
+  .tekst-pod {
+    font-size: 1.5rem;
+  }
+
+  .btn {
+    font-size: 1.2rem;
+    padding: 1rem 2rem;
+  }
+}
+@media screen and (max-width: 920px) {
+  .roz-menu {
+    display: block;
+    cursor: pointer;
+  }
+  .roz-menu .line {
+    width: 30px;
+    height: 3px;
+    background: white;
+    margin: 6px 0;
+  }
+  .navbar {
+    display: none;
+  }
+  .navbar.active {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #88b04b;
+    z-index: 1;
+    padding: 1.5rem;
+    margin-top: 0.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  }
+  .navbar.active a {
+    color: ff6f61;
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+  }
+  .promo {
+    padding: 1.5rem;
+    font-size: 2.2em;
+  }
+
+  .tekst-pod {
+    font-size: 1.2rem;
+  }
+
+  .btn {
+    font-size: 1rem;
+    padding: 1rem 2rem;
+  }
+}
